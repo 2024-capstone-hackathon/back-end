@@ -12,16 +12,16 @@ const dbConfig = {
 
 /* POST letter listing */
 router.post('/', async (req, res) => {
-  console.log("안녕하세요.");
+  console.log("letter listing.");
   const { title, datetime, age } = req.body;
 
   try {
     console.log(",,,");
-     const connection = await mysql.createConnection(dbConfig);
+    const connection = await mysql.createConnection(dbConfig);
 
-     const query = 'INSERT INTO stories (title, datetime, age) VALUES (?, ?, ?)';
-     await connection.execute(query, [title, datetime, age]);
-     await connection.end();
+    const query = 'INSERT INTO stories (title, datetime, age) VALUES (?, ?, ?)';
+    await connection.execute(query, [title, datetime, age]);
+    await connection.end();
 
     res.status(201).send('Story added successfully');
   } catch (error) {
